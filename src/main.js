@@ -2,14 +2,20 @@ import Schedule from './components/Schedule';
 import { schools, classrooms, lectures } from './sheduleObjects';
 
 const mySchedule = new Schedule();
-
 schools.forEach(school => {
-    mySchedule.createSchool(school.name, school.amount);
+    mySchedule.create('school', { name: school.name, amount: school.amount });
 });
+
 classrooms.forEach(classroom => {
-    mySchedule.createClassroom(classroom.name, classroom.capacity);
+    mySchedule.create('classroom', { name: classroom.name, capacity: classroom.capacity });
 });
+
 lectures.forEach(lecture => {
-    mySchedule.createLecture(lecture.name, lecture.lecturer,
-        lecture.time, lecture.classroomId, lecture.schoolsId);
+    mySchedule.create('lecture', {
+        name: lecture.name,
+        lecturer: lecture.lecturer,
+        time: lecture.time,
+        classroomId: lecture.classroomId,
+        schoolsId: lecture.schoolsId
+    });
 });
