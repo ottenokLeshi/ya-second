@@ -268,6 +268,7 @@ export default class Schedule {
                                       return (time[0].getTime() >= options.time[0].getTime() &&
                                       time[1].getTime() <= options.time[1].getTime());
                                   });
+                    break;
                 }
                 }
                 break;
@@ -623,7 +624,7 @@ export default class Schedule {
                 classroom.deleteLecturesId(options.id);
                 const schools = lecture.getSchoolsId().map(itemId => this.get('school', { id: itemId }));
                 schools.forEach(school => school.deleteLecturesId(options.id));
-                this._state.lectures = this._state.lectures.filter(lecture => lecture.getId() !== options.id);
+                this._state.lectures = this._state.lectures.filter(lectureObj => lectureObj.getId() !== options.id);
                 break;
             }
             }
